@@ -1,0 +1,33 @@
+/*ul li {
+  float: left;
+  border: solid 1px;
+  display: inline;
+}
+
+ul {
+  width: 400px;
+  display: block;
+  list-style-type: none;
+}*/
+
+ul {
+  list-style-type: none;
+  width: 500px;
+  height: 500px;
+}
+
+ul li {
+  width: 30%;
+  height: 30%;
+  float: left;
+  border: solid 1px;
+  background-color: grey;
+}
+
+.selected {
+  background-color: yellow;
+}
+
+li:hover {
+  background-color: yellow;
+}
