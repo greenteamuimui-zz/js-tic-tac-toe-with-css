@@ -3,29 +3,35 @@ class View {
     this.game = game;
     this.$el = $el;
     this.setupBoard();
+    this.bindEvents();
   }
 
   bindEvents() {
-    this.$el.find("li").each( (idx, $li) => {
-      $li.click( () => {
-          // this.game.playMove($li.data('pos'));
-          this.makeMove($li);
-        });
+    this.$el.on("click", "li", event => {
+      this.makeMove($(event.currentTarget));
     });
   }
 
   makeMove($square) {
-    const mark = this.game.currentPlayer;
-    $square.text(mark);
-    if (mark === "x") {
-      $square.addClass('x');
-    } else{
-      $square.addClass('o');
-    }
-    if (!$square.text()) {
+    if (!$square.is(':empty')) {
       alert(`Wrong Move`);
+    } else {
+      const mark = this.game.currentPlayer;
+      $square.text(mark);
+      if (mark === "x") {
+        $square.removeClass('o');
+        $square.addClass('x');
+      } else{
+        $square.removeClass('x');
+        $square.addClass('o');
+      }
+
+      this.game.playMove($square.data('pos'));
+      
+      if (this.game.isOver()) {
+        alert("You win!");
+      }
     }
-    this.game.playMove($square.data('pos'));
   }
 
   setupBoard() {
