@@ -24,8 +24,16 @@ ul li {
   background-color: grey;
 }
 
-.selected {
-  background-color: yellow;
+.x {
+  background-color: white;
+  font-size: 200%;
+  color: red;
+}
+
+.o {
+  background-color: white;
+  font-size: 200%;
+  color: blue;
 }
 
 li:hover {
